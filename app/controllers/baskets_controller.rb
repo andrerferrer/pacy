@@ -30,7 +30,7 @@ class BasketsController < ApplicationController
     @items = @basket.basket_meals.map do |basket_meal|
       basket_meal.to_stripe_hash
     end.flatten
-    
+
     Stripe::Checkout::Session.create(
       payment_method_types: ['card'],
       line_items: @items,
